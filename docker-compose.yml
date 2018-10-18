@@ -11,7 +11,7 @@ services:
         - "443:443"
       volumes:
         - /data/wwwroot:/data/wwwroot:rw
-        - /etc/ssl:/etc/ssl:ro
+        - /opt/ssl:/opt/ssl:ro
       restart: always
       networks:
         - net-lfs

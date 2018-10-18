@@ -24,7 +24,7 @@ services:
       expose:
         - "9000"
       volumes:
-        - ./data/wwwroot:/data/wwwroot:rw
+        - /data/wwwroot:/data/wwwroot:rw
         - /var/log/php:/var/log:rw
       restart: always
       networks:

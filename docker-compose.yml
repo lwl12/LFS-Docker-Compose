@@ -1,0 +1,69 @@
+version: '1.0.0'
+services:
+
+  ### Nginx container #########################################
+
+  nginx:
+      image: lwl12/lfs-nginx
+      env_file: .env
+      ports:
+        - "80:80"
+        - "443:443"
+      volumes:
+        - /data/wwwroot:/data/wwwroot:rw
+      restart: always
+      networks:
+        - net-lfs
+
+  ### PHP container #########################################
+  php:
+      image: lwl12/lfs-php
+      env_file: .env
+      expose:
+        - "9000"
+      volumes:
+        - ./data/wwwroot:/data/wwwroot:rw
+        - ./var/log/php:/var/log:rw
+      restart: always
+      networks:
+        - net-lfs
+
+  ### Mysql container #########################################
+
+  mysql:
+      image: mysql:8.0
+      env_file: .env
+      expose:
+        - "3306"
+      volumes:
+        - ./data/mysql:/var/lib/mysql:rw
+        - ./config/mysql/config/mysql.cnf:/etc/mysql/conf.d/mysql.cnf:ro
+        - ./var/log/mysql:/var/log/mysql:rw
+      restart: always
+      environment:
+        MYSQL_ROOT_PASSWORD_FILE: /run/secrets/mysql_root_password
+      secrets:
+        - mysql_root_password
+      networks:
+        - net-lfs
+
+  ### Redis container #########################################
+
+  redis:
+      image: redis:4.0
+      env_file: .env
+      expose:
+        - "6379"
+      volumes:
+        - ./config/redis/config/redis.conf:/usr/local/etc/redis/redis.conf:ro
+        - ./var/log/redis/redis.log:/var/log/redis/redis.log:rw
+      restart: always
+      networks:
+        - net-lfs
+
+secrets:
+  mysql_root_password:
+    file: ./mysql_root_password.txt
+
+networks:
+  net-lfs:

@@ -23,7 +23,7 @@ services:
         - "9000"
       volumes:
         - ./data/wwwroot:/data/wwwroot:rw
-        - ./var/log/php:/var/log:rw
+        - /var/log/php:/var/log:rw
       restart: always
       networks:
         - net-lfs
@@ -36,9 +36,9 @@ services:
       expose:
         - "3306"
       volumes:
-        - ./data/mysql:/var/lib/mysql:rw
+        - /data/mysql:/var/lib/mysql:rw
         - ./config/mysql/mysql.cnf:/etc/mysql/conf.d/mysql.cnf:ro
-        - ./var/log/mysql:/var/log/mysql:rw
+        - /var/log/mysql:/var/log/mysql:rw
       restart: always
       environment:
         MYSQL_ROOT_PASSWORD_FILE: /run/secrets/mysql_root_password
@@ -56,7 +56,7 @@ services:
         - "6379"
       volumes:
         - ./config/redis/redis.conf:/usr/local/etc/redis/redis.conf:ro
-        - ./var/log/redis/redis.log:/var/log/redis/redis.log:rw
+        - /var/log/redis/redis.log:/var/log/redis/redis.log:rw
       restart: always
       networks:
         - net-lfs

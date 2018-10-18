@@ -61,9 +61,9 @@ services:
       networks:
         - net-lfs
 
-secrets:
-  mysql_root_password:
-    file: ./mysql_root_password.txt
+  secrets:
+    mysql_root_password:
+      file: ./mysql_root_password.txt
 
 networks:
   net-lfs:

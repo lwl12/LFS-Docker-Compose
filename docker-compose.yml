@@ -81,7 +81,7 @@ services:
   ### Redis container #########################################
 
   redis:
-      image: redis:4-alpine
+      image: redis:5-alpine
       container_name: redis
       env_file: .env
       expose:

@@ -41,7 +41,7 @@ services:
   php:
       image: lwl12/lfs-php
       container_name: php
-      port:
+      ports:
         - "127:0.0.1:27889:27889"
       volumes:
         - /data/wwwroot:/data/wwwroot:rw

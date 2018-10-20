@@ -87,7 +87,7 @@ services:
       expose:
         - "6379"
       volumes:
-        - ./config/redis/redis.conf:/usr/local/etc/redis/redis.conf:ro
+        #- ./config/redis/redis.conf:/usr/local/etc/redis/redis.conf:ro
         - /var/log/redis/redis.log:/var/log/redis/redis.log:rw
       restart: always
       environment:

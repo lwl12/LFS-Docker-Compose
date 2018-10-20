@@ -18,6 +18,8 @@ services:
       hostname: ${Hostname}
       networks:
         - net-lfs
+      deploy:
+        mode: global
 
   ### PHP container #########################################
   php:
@@ -32,6 +34,8 @@ services:
       restart: always
       networks:
         - net-lfs
+      deploy:
+        mode: global
 
   ### Mysql container #########################################
 
@@ -52,6 +56,8 @@ services:
         - mysql_root_password
       networks:
         - net-lfs
+      deploy:
+        mode: global
 
   ### Redis container #########################################
 
@@ -67,10 +73,26 @@ services:
       restart: always
       networks:
         - net-lfs
+      deploy:
+        mode: global
 
 secrets:
   mysql_root_password:
     file: ./mysql_root_password.txt
+  lwl12.com.key:
+    file: /opt/ssl/lwl12.com.key
+  cn2.network.key:
+    file: /opt/ssl/lwl12.com.key
+  lwl.moe.key:
+    file: /opt/ssl/lwl12.com.key
+  lwl12.com.cer:
+    file: /opt/ssl/lwl12.com.cer
+  cn2.network.cer:
+    file: /opt/ssl/lwl12.com.cer
+  lwl.moe.cer:
+    file: /opt/ssl/lwl12.com.cer
+  letsencrypt.ca.cer:
+    file: /opt/ssl/letsencrypt.ca.cer
 
 networks:
   net-lfs:

@@ -18,6 +18,19 @@ services:
       hostname: ${Hostname}
       networks:
         - net-lfs
+      secrets:
+        - lwl12.com.key
+        - cn2.network.key
+        - lwl.moe.key
+        - lwl12.com.cer
+        - cn2.network.cer
+        - lwl.moe.cer
+        - lwl12.com_ecc.key
+        - cn2.network_ecc.key
+        - lwl.moe_ecc.key
+        - lwl12.com_ecc.cer
+        - cn2.network_ecc.cer
+        - lwl.moe_ecc.cer
       deploy:
         mode: global
 
@@ -91,6 +104,18 @@ secrets:
     file: /opt/ssl/lwl12.com.cer
   lwl.moe.cer:
     file: /opt/ssl/lwl12.com.cer
+  lwl12.com_ecc.key:
+    file: /opt/ssl/lwl12.com_ecc.key
+  cn2.network_ecc.key:
+    file: /opt/ssl/lwl12.com_ecc.key
+  lwl.moe_ecc.key:
+    file: /opt/ssl/lwl12.com_ecc.key
+  lwl12.com_ecc.cer:
+    file: /opt/ssl/lwl12.com_ecc.cer
+  cn2.network_ecc.cer:
+    file: /opt/ssl/lwl12.com_ecc.cer
+  lwl.moe_ecc.cer:
+    file: /opt/ssl/lwl12.com_ecc.cer
   letsencrypt.ca.cer:
     file: /opt/ssl/letsencrypt.ca.cer
 

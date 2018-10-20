@@ -18,6 +18,8 @@ services:
       hostname: ${Hostname}
       networks:
         - net-lfs
+      environment:
+        TZ: ${TZ}
       secrets:
         - lwl12.com.key
         - cn2.network.key
@@ -31,8 +33,10 @@ services:
         - lwl12.com_ecc.cer
         - cn2.network_ecc.cer
         - lwl.moe_ecc.cer
+        - letsencrypt.ca.cer
       deploy:
         mode: global
+      
 
   ### PHP container #########################################
   php:
@@ -47,6 +51,8 @@ services:
       restart: always
       networks:
         - net-lfs
+      environment:
+        TZ: ${TZ}
       deploy:
         mode: global
 
@@ -55,7 +61,6 @@ services:
   mysql:
       image: mysql:8.0
       container_name: mysql
-      env_file: .env
       expose:
         - "3306"
       volumes:
@@ -64,6 +69,7 @@ services:
         - /var/log/mysql:/var/log/mysql:rw
       restart: always
       environment:
+        TZ: ${TZ}
         MYSQL_ROOT_PASSWORD_FILE: /run/secrets/mysql_root_password
       secrets:
         - mysql_root_password
@@ -84,6 +90,8 @@ services:
         - ./config/redis/redis.conf:/usr/local/etc/redis/redis.conf:ro
         - /var/log/redis/redis.log:/var/log/redis/redis.log:rw
       restart: always
+      environment:
+        TZ: ${TZ}
       networks:
         - net-lfs
       deploy:

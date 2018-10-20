@@ -6,7 +6,6 @@ services:
   nginx:
       image: lwl12/lfs-nginx
       container_name: nginx
-      env_file: .env
       ports:
         - "80:80"
         - "443:443"
@@ -42,9 +41,8 @@ services:
   php:
       image: lwl12/lfs-php
       container_name: php
-      env_file: .env
-      expose:
-        - "9000"
+      port:
+        - "127:0.0.1:27889:27889"
       volumes:
         - /data/wwwroot:/data/wwwroot:rw
         - /var/log/php:/var/log:rw
@@ -61,8 +59,6 @@ services:
   mysql:
       image: mysql:8.0
       container_name: mysql
-      expose:
-        - "3306"
       volumes:
         - /data/mysql:/var/lib/mysql:rw
         #- ./config/mysql/mysql.cnf:/etc/mysql/conf.d/mysql.cnf:ro
@@ -83,9 +79,6 @@ services:
   redis:
       image: redis:5-alpine
       container_name: redis
-      env_file: .env
-      expose:
-        - "6379"
       volumes:
         #- ./config/redis/redis.conf:/usr/local/etc/redis/redis.conf:ro
         - /var/log/redis:/var/log/redis:rw

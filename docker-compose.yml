@@ -32,6 +32,10 @@ services:
         - lwl12.com_ecc.cer
         - cn2.network_ecc.cer
         - lwl.moe_ecc.cer
+        - fly3949.com.key
+        - fly3949.com.cer
+        - fly3949.com_ecc.key
+        - fly3949.com_ecc.cer
         - letsencrypt.ca.cer
       deploy:
         mode: global
@@ -117,6 +121,14 @@ secrets:
     file: /opt/ssl/cn2.network_ecc.cer
   lwl.moe_ecc.cer:
     file: /opt/ssl/lwl.moe_ecc.cer
+  fly3949.com_ecc.cer:
+    file: /opt/ssl/fly3949.com_ecc.cer
+  fly3949.com.cer:
+    file: /opt/ssl/fly3949.com.cer
+  fly3949.com_ecc.key:
+    file: /opt/ssl/fly3949.com_ecc.key
+  fly3949.com.key:
+    file: /opt/ssl/fly3949.com.key
   letsencrypt.ca.cer:
     file: /opt/ssl/letsencrypt.ca.cer
 

@@ -63,7 +63,7 @@ services:
       container_name: mysql
       volumes:
         - /data/mysql:/var/lib/mysql:rw
-        #- ./config/mysql/mysql.cnf:/etc/mysql/conf.d/mysql.cnf:ro
+        - ./config/mysql/mysql.cnf:/etc/mysql/conf.d/mysql.cnf:ro
         - /var/log/mysql:/var/log/mysql:rw
       restart: always
       environment:

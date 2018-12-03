@@ -56,7 +56,7 @@ services:
       volumes:
         - /data/wwwroot:/data/wwwroot:rw
         - /var/log/php:/var/log:rw
-        - /usr/local/etc/php-fpm.d/docker.conf:./config/php/fpm/docker.conf:ro
+        - ./config/php/fpm/docker.conf:/usr/local/etc/php-fpm.d/docker.conf:ro
       restart: always
       networks:
         - net-lfs

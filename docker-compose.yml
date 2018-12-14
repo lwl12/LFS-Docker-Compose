@@ -51,13 +51,14 @@ services:
 
   ### PHP container #########################################
   php:
-      image: lwl12/lfs-php
+      image: metowolf/php:latest-fpm-alpine
       #image: lwl12/lfs-phpython #With Python
       container_name: php
       volumes:
         - /data/wwwroot:/data/wwwroot:rw
         - /var/log/php:/var/log:rw
         - ./config/php/fpm/docker.conf:/usr/local/etc/php-fpm.d/docker.conf:ro
+        - ./config/php/crontab:/etc/crontabs:rw
       restart: always
       networks:
         - net-lfs

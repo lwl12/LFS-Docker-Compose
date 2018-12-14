@@ -57,6 +57,7 @@ services:
       volumes:
         - /data/wwwroot:/data/wwwroot:rw
         - /var/log/php:/var/log:rw
+        - ./config/php/php.ini:/usr/local/etc/php/php.ini
         - ./config/php/fpm/docker.conf:/usr/local/etc/php-fpm.d/docker.conf:ro
         - ./config/php/crontab:/etc/crontabs:rw
       restart: always

@@ -51,7 +51,7 @@ services:
 
   ### PHP container #########################################
   php:
-      image: metowolf/php:latest-fpm-alpine
+      image: metowolf/php:7.3
       #image: lwl12/lfs-phpython #With Python
       container_name: php
       volumes:
